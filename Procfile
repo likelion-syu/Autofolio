@@ -1,0 +1,1 @@
+web: gunicorn autofolio.wsgi --log-file -

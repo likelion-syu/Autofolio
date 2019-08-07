@@ -25,7 +25,7 @@ SECRET_KEY = 'v6=3_uy+5dwg4*#!4wix9l7b1-k#i7n713501@yirw72k74d-h'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*','ec2-18-219-198-186.us-east-2.compute.amazonaws.com']
 
 
 # Application definition
@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'account',
     'draft',
     'portfolio',
+    'theme',
 ]
 
 MIDDLEWARE = [
@@ -59,7 +60,7 @@ ROOT_URLCONF = 'autofolio.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [ os.path.join(BASE_DIR, 'common' ,'templates') ],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -128,6 +129,7 @@ STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'account', 'static'),
     os.path.join(BASE_DIR, 'draft', 'static'),
     os.path.join(BASE_DIR, 'portfolio', 'static'),
+    os.path.join(BASE_DIR, 'common', 'static'),
 ]
 
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
