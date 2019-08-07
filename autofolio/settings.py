@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'account',
     'draft',
     'portfolio',
+    'theme',
 ]
 
 MIDDLEWARE = [
