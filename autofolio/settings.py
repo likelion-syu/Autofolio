@@ -31,6 +31,8 @@ ALLOWED_HOSTS = ['*','ec2-18-219-198-186.us-east-2.compute.amazonaws.com']
 # Application definition
 
 INSTALLED_APPS = [
+    'account',
+    
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -39,7 +41,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     
     
-    'account',
+    
     'draft',
     'portfolio',
     'theme',
