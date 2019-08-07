@@ -1,10 +1,18 @@
 from django.shortcuts import render
 
+<<<<<<< HEAD
+# create
 def draft(request):
-    return render(request,'draft/create.html')
+    return render(request,'./draft/create.html')
+=======
+def draft_new(request):
+    return render(request,'draft/new.html')
+>>>>>>> dfe8bfd96574af1db2129066294a08594a205210
 
-def draft_list(req):
-    return render(req , './draft/list.html')
+# list
+def draft_list(request):
+    return render(request , './draft/list.html')
 
-def draft_detail(req):
-    return render(req , './draft/detail.html')
+# detail
+def draft_detail(request):
+    return render(request , './draft/detail.html')
