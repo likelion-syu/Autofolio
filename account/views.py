@@ -9,14 +9,13 @@ def signup(req):
     if req.method == 'POST':
         if req.POST['password'] == req.POST['password_confirm']:
             try:
-                user = User.objects.get(emailaddress=req.POST['email'])
+                user = User.objects.get(username=req.POST['username'])
                 return render(req, './account/index.html', {
                     'error' : '가입된 이메일이 존재합니다.'
                 })
             except User.DoesNotExist:    
                 user = User.objects.create_user(
-                    emailaddress=req.POST['email'],
-                    username='user'+user.id,
+                    username=req.POST['username'],
                     password=req.POST['password']
                 )
                 auth.login(req, user)
