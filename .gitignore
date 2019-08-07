@@ -4,6 +4,7 @@
 
 ### Django ###
 
+autofolio/__pycache__/
 *.log
 *.pot
 *.pyc
