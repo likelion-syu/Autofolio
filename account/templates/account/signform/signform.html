@@ -1,35 +1,36 @@
 <div class="sign-wrapper show">
-	<div id="signup-btn">Sign up</div>
+	<div id="signup-btn" class="btn-active">Sign up</div>
 	<div id="signin-btn">Sign in</div>
-	<div class="signup-container show">
+	<div class="signup-container signform-show">
 		<form method="POST" action="{% url 'signup' %}">
 			{% csrf_token %}
 			<label>Name</label><br>
-			<input type="text" name="username"/><br>
+			<input type="text" name="username" required="ture"/><br>
 		
 			{% if id_error %}
 			{{ id_error }}<br>
 			{% endif %}
 		
 			<label>Password</label><br>
-			<input type="password" name="password" /><br>
+			<input type="password" name="password" required="ture"/><br>
 			<label>Password Confirm</label><br>
-			<input type="password" name="password_confirm" /><br>
+			<input type="password" name="password_confirm" required="ture"/><br>
 		
 			{% if pwd_error %}
 			{{ pwd_error }}<br>
 			{% endif %}
 			
 			<input type="submit" value="Sign up" /><br>
+			회원가입 진행시 Autofolio의 개인정보 취급 및 가입 약관에 동의하는 것으로 간주 합니다.
 		</form>
 	</div>
 	<div class="signin-container">
 		<form method="POST" action="{% url 'signin' %}">
 			{% csrf_token %}
 			<label>Name</label><br>
-			<input type="text" name="username"/><br>
+			<input type="text" name="username" required="ture"/><br>
 			<label>Password</label><br>
-			<input type="password" name="password" /><br>
+			<input type="password" name="password" required="ture"/><br>
 			<input type="submit" value="Login" /><br>
 		</form>
 	</div>
@@ -38,12 +39,16 @@
 <script>
 	$(document).ready(function() {
 		$('#signup-btn').on('click', function(){
-			$('.signup-container').addClass('show');
-			$('.signin-container').removeClass('show');
+			$('.signup-container').addClass('signform-show');
+			$('#signup-btn').addClass('btn-active');
+			$('.signin-container').removeClass('signform-show');
+			$('#signin-btn').removeClass('btn-active');
 		});
 		$('#signin-btn').on('click', function(){
-			$('.signup-container').removeClass('show');
-			$('.signin-container').addClass('show');
+			$('.signup-container').removeClass('signform-show');
+			$('#signup-btn').removeClass('btn-active');
+			$('.signin-container').addClass('signform-show');
+			$('#signin-btn').addClass('btn-active');
 		});
 	});
 </script>
