@@ -11,7 +11,7 @@ def signup(req):
             try:
                 user = User.objects.get(username=req.POST['username'])
                 return render(req, './account/index.html', {
-                    'error' : '가입된 이메일이 존재합니다.'
+                    'id_error' : '가입된 이메일이 존재합니다.'
                 })
             except User.DoesNotExist:    
                 user = User.objects.create_user(
@@ -22,12 +22,26 @@ def signup(req):
                 return redirect('portfolio_list')
         else:
             return render(req, './account/index.html', {
-                'error' : '비밀번호가 일치하지 않습니다.'
-        })        
+                'pwd_error' : '비밀번호가 일치하지 않습니다.'
+            })        
     return render(req, './account/index.html')   
 
 def signin(req):
-    return True
+    # return True
+    if req.method == 'POST':
+        username = req.POST['username']
+        password = req.POST['password']
+        user = auth.authenticate(req, username=username, password=password)
+        if user is not None:
+            auth.login(req, user)
+            return redirect('portfolio_list')
+        else:
+            return render(req, './account/index.html', {
+                'login_error' : '아이디 또는 패스워드가 알맞지 않습니다.'            
+            })
+    else:
+        return render(request, './account/index.html')
+
 
 def account_find(req):
     return render(req, './account/find.html')
