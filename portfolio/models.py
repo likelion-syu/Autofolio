@@ -23,7 +23,7 @@ class Portfolio(models.Model):
     # 최종 수정 일자
     last_modified_dt = models.DateTimeField(default = timezone.now)
     # 최종 수정자 번호 
-    user_id=  models.ForeignKey(User , on_delete=models.CASCADE)
+    last_modified_user_id=  models.ForeignKey(User , on_delete=models.CASCADE)
 
 # 생성된 서브도메인 관리용
 class Subdomain(models.Model):
@@ -37,5 +37,5 @@ class Subdomain(models.Model):
     # 최종 수정 일자
     last_modified_dt = models.DateTimeField(default = timezone.now)
     # 최종 수정자 번호 
-    user_id = models.ForeignKey(User , on_delete=models.CASCADE)
+    last_modified_user_id = models.ForeignKey(User , on_delete=models.CASCADE)
 

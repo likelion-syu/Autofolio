@@ -18,7 +18,7 @@ class Draft(models.Model):
     # 최종 수정 일자
     last_modified_dt = models.DateTimeField(default=timezone.now)
     # 최종 수정자
-    user_id = models.ForeignKey(User, on_delete=models.CASCADE)
+    last_modified_user_id = models.ForeignKey(User, on_delete=models.CASCADE)
     
 # 드래프트 중 이력서 항목 관리용 모델
 class DraftResume(models.Model):
@@ -34,7 +34,7 @@ class DraftResume(models.Model):
     # 최종 수정 일자
     last_modified_dt = models.DateTimeField(default=timezone.now)
     # 최종 수정자
-    user_id = models.ForeignKey(User, on_delete=models.CASCADE)
+    last_modified_user_id = models.ForeignKey(User, on_delete=models.CASCADE)
 
 # 드래프트 중 포트폴리오 항목 관리용 모델
 class DraftPortfolio(models.Model):
@@ -60,7 +60,7 @@ class DraftPortfolio(models.Model):
     # 최종 수정 일자
     last_modified_dt = models.DateTimeField(default=timezone.now)
     # 최종 수정자
-    user_id = models.ForeignKey(User, on_delete=models.CASCADE)
+    last_modified_user_id = models.ForeignKey(User, on_delete=models.CASCADE)
 
 # 드래프트 중 활동 내역 항목 관리용 모델
 class DraftActivity(models.Model):
@@ -78,6 +78,6 @@ class DraftActivity(models.Model):
     # 최종 수정일자 
     last_modified_dt = models.DateTimeField(default=timezone.now)
     # 최종 수정자
-    user_id = models.ForeignKey(User , on_delete = models.CASCADE)
+    last_modified_user_id = models.ForeignKey(User , on_delete = models.CASCADE)
 
 
