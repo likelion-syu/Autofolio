@@ -3,7 +3,7 @@
 # Edit at https://www.gitignore.io/?templates=django
 
 # bower 
-/common/static/bower_components/
+common/static/bower_components
 
 ### Django ###
 
