@@ -8,7 +8,6 @@ def directory_path_by_user(instance , filename):
     now = timezone.now()
     return '{0}/user_{1}/{2}'.format(now.strftime('%Y%m') , instance.user_id.id , filename)
 
-
 # 드래프트 전체를 관리하는 모델
 class Draft(models.Model):
     # 드래프트 제목
