@@ -17,5 +17,5 @@ class Theme(models.Model):
     # 최종 수정 일자
     last_modified_dt = models.DateTimeField(default=timezone.now)
     # 최종 수정자 
-    last_modified_user_id = models.ForeignKey(User , on_delete=models.CASCADE , related_name="last_modified_user")
+    last_modified_user = models.ForeignKey(User , on_delete=models.CASCADE , related_name="theme_last_modified_user")
 

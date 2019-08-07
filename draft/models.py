@@ -8,17 +8,18 @@ def directory_path_by_user(instance , filename):
     now = timezone.now()
     return '{0}/user_{1}/{2}'.format(now.strftime('%Y%m') , instance.user_id.id , filename)
 
-
 # 드래프트 전체를 관리하는 모델
 class Draft(models.Model):
     # 드래프트 제목
     title = models.CharField(max_length=200)
+    author = models.ForeignKey(User , on_delete=models.CASCADE , related_name="draft_author")
+
     # 드래프트 생성일
     created_dt = models.DateTimeField(default=timezone.now)
     # 최종 수정 일자
     last_modified_dt = models.DateTimeField(default=timezone.now)
     # 최종 수정자
-    last_modified_user_id = models.ForeignKey(User, on_delete=models.CASCADE)
+    last_modified_user = models.ForeignKey(User, on_delete=models.CASCADE , related_name="draft_last_modified_user")
     
 # 드래프트 중 이력서 항목 관리용 모델
 class DraftResume(models.Model):
@@ -34,7 +35,7 @@ class DraftResume(models.Model):
     # 최종 수정 일자
     last_modified_dt = models.DateTimeField(default=timezone.now)
     # 최종 수정자
-    last_modified_user_id = models.ForeignKey(User, on_delete=models.CASCADE)
+    last_modified_user= models.ForeignKey(User, on_delete=models.CASCADE)
 
 # 드래프트 중 포트폴리오 항목 관리용 모델
 class DraftPortfolio(models.Model):
@@ -60,7 +61,7 @@ class DraftPortfolio(models.Model):
     # 최종 수정 일자
     last_modified_dt = models.DateTimeField(default=timezone.now)
     # 최종 수정자
-    last_modified_user_id = models.ForeignKey(User, on_delete=models.CASCADE)
+    last_modified_user = models.ForeignKey(User, on_delete=models.CASCADE)
 
 # 드래프트 중 활동 내역 항목 관리용 모델
 class DraftActivity(models.Model):
@@ -78,6 +79,6 @@ class DraftActivity(models.Model):
     # 최종 수정일자 
     last_modified_dt = models.DateTimeField(default=timezone.now)
     # 최종 수정자
-    last_modified_user_id = models.ForeignKey(User , on_delete = models.CASCADE)
+    last_modified_user = models.ForeignKey(User , on_delete = models.CASCADE)
 
 
