@@ -128,6 +128,7 @@ STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'account', 'static'),
     os.path.join(BASE_DIR, 'draft', 'static'),
     os.path.join(BASE_DIR, 'portfolio', 'static'),
+    os.path.join(BASE_DIR, '', 'static'),
 ]
 
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
