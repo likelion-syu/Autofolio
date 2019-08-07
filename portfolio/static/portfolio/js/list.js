@@ -1,9 +1,7 @@
-angular.module('afapp' , [])
+window.__angular_app
 .directive('myRepeatDirective', function() {
     return function(scope, element, attrs) {
         if (scope.$last){
-        // window.alert("im the last!");
-            // window._swiper = 
             window._swiper = new Swiper('.swiper-container', {
                 slidesPerView: 3,
                 spaceBetween: 30,

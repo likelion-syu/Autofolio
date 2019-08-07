@@ -1,3 +1,4 @@
+import json
 from django.shortcuts import render
 from draft.models import Draft , DraftActivity , DraftPortfolio , DraftResume
 from .models import Portfolio , Subdomain
@@ -5,10 +6,11 @@ from .models import Portfolio , Subdomain
 def portfolio_list(req):
     # 현재 생성된 draft의 수를 확인
     # drafts_count = Draft.objects.filter(author=req.user).count()
-    portfolios = Portfolio.objects.all().filter(author=req.user)
+    # portfolios = Portfolio.objects.all().filter(author=req.user)
     
     return render(req , './portfolio/list.html' , {
         'drafts_count' : 0,
+        'portfolios' : json.dumps([])
     })	
 
 def portfolio_detail(req):
@@ -16,3 +18,13 @@ def portfolio_detail(req):
 
 def portfolio_preview(req):
     return render(req , './portfolio/preview.html')
+
+def portfolio_create(req):
+    return render(req , './portfolio/detail.html' , {
+        'type' : 'create'
+    })
+
+def portfolio_update(req):
+    return render(req , './portfolio/detail.html' , {
+        'type' : 'update'
+    })

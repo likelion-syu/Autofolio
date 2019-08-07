@@ -16,6 +16,11 @@
     <script type='text/javascript' src="{% static 'common/bower_components/font-awesome/js/all.min.js' %}"></script>
     <script type='text/javascript' src="{% static 'common/bower_components/bootstrap/dist/js/bootstrap.js' %}"></script>
     
+    <script type='text/javascript'>
+        // angular load
+        window.__angular_app = angular.module('afapp' , [])
+    </script>
+
     {% block head %}
     {% endblock %}
 </head>
