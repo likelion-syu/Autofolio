@@ -1,0 +1,23 @@
+{
+  "name": "autofolio",
+  "homepage": "https://github.com/likelion-syu/Autofolio",
+  "authors": [
+    "Yoo KyeongSoo <dev.yoogomja@gmail.com>"
+  ],
+  "description": "likelion hackathon",
+  "main": "",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "^3.4.1",
+    "angular": "^1.7.8",
+    "font-awesome": "^5.10.1",
+    "bootstrap": "^4.3.1"
+  }
+}
