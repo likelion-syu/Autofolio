@@ -24,11 +24,17 @@ class Draft(models.Model):
 # 드래프트 중 이력서 항목 관리용 모델
 class DraftResume(models.Model):
     # 관련 드래프트 번호
-    draft_id = models.ForeignKey(Draft , on_delete=models.CASCADE , default=None)
+    draft_id = models.ForeignKey(Draft , on_delete=models.CASCADE, default=None)
     # 이력서_이름 
     name = models.CharField(max_length=50)
     # 이력서_나이
     age = models.IntegerField()
+    # 이력서_성별
+    gender = models.CharField("성별",choices=(('male','남자'),('female','여자'),('other','기타'),),max_length=80)
+    # 핸드폰 번호
+    tel = models.CharField(max_length=12)
+    #이메일
+    email = models.EmailField(max_length=70, blank=True)
 
     # 생성 일자
     created_dt = models.DateTimeField(default=timezone.now)
