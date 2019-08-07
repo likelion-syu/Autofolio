@@ -1,0 +1,49 @@
+<div class="sign-wrapper show">
+	<div id="signup-btn">Sign up</div>
+	<div id="signin-btn">Sign in</div>
+	<div class="signup-container show">
+		<form method="POST" action="{% url 'signup' %}">
+			{% csrf_token %}
+			<label>Name</label><br>
+			<input type="text" name="username"/><br>
+		
+			{% if id_error %}
+			{{ id_error }}<br>
+			{% endif %}
+		
+			<label>Password</label><br>
+			<input type="password" name="password" /><br>
+			<label>Password Confirm</label><br>
+			<input type="password" name="password_confirm" /><br>
+		
+			{% if pwd_error %}
+			{{ pwd_error }}<br>
+			{% endif %}
+			
+			<input type="submit" value="Sign up" /><br>
+		</form>
+	</div>
+	<div class="signin-container">
+		<form method="POST" action="{% url 'signin' %}">
+			{% csrf_token %}
+			<label>Name</label><br>
+			<input type="text" name="username"/><br>
+			<label>Password</label><br>
+			<input type="password" name="password" /><br>
+			<input type="submit" value="Login" /><br>
+		</form>
+	</div>
+</div>
+
+<script>
+	$(document).ready(function() {
+		$('#signup-btn').on('click', function(){
+			$('.signup-container').addClass('show');
+			$('.signin-container').removeClass('show');
+		});
+		$('#signin-btn').on('click', function(){
+			$('.signup-container').removeClass('show');
+			$('.signin-container').addClass('show');
+		});
+	});
+</script>
