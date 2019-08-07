@@ -1,7 +1,7 @@
 from django.shortcuts import render
 
-def draft(request):
-    return render(request,'draft/create.html')
+def draft_new(request):
+    return render(request,'draft/new.html')
 
 def draft_list(req):
     return render(req , './draft/list.html')
