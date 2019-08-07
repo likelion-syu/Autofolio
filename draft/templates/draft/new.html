@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script type="text/javascript">
+        document.getElementById('date').valueAsDate = new Date();
+    </script>
+</head>
+<body>
+    <div>
+        <form method='GET'>
+            <table border="1">
+                <tr>
+                    <td>이름</td>
+                    <td><input type='text' name="name"></td>
+                    <td>생년월일</td>
+                    <td><input type="date" id="date" name="birth" min="1900-01-01"></td>
+                    <td>성별</td>
+                    <td>
+                        <select name="sex">
+                            <option value="male">남성</option>
+                            <option value="female">여성</option>
+                            <option value="other">기타</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>핸드폰 번호</td>
+                    <td><input type='tel' name="phone"></td>
+                    <td>이메일</td>
+                    <td><input type='email' name="email"></td>
+                </tr>
+                <tr>
+                    <td>주소</td>
+                    <td><input type='text' name="address"></td>
+                </tr>
+            </table>
+        
+        </form>
+    </div>
+    <div>
+        <form>
+            <table border="1">
+                <tr>
+                    <td>SNS</td>
+                    <td>
+                        <select name="SNS">
+                            <option value="instagram">instagram</option>
+                            <option value="facebook">facebook</option>
+                            <option value="twitter">twitter</option>
+                            <option value="tistory">tistory</option>
+                        </select>
+                    </td>
+                    <td>Link</td>
+                    <td><input type="text" name="sns_link"></td>                    
+                </tr>
+                
+            </table>
+        </form>
+        <a>삭제하기</a>
+    </div>
+    <div>
+        <form>
+            <table border="1">
+                <tr>
+                    <td>기간</td>
+                    <td><input type="date" id="date" name="birth" min="1900-01-01"> ~ <input type="date" id="date" name="birth" min="1900-01-01"></td>
+                </tr>
+                <tr>
+                    <td>학교명</td>
+                    <td><input type="text" name="school"></td>
+                </tr>
+                <tr>
+                    <td>분류</td>
+                    <td>
+                        <select name="">
+                            <option value="moon">문과</option>
+                            <option value="ee">이과</option>
+                            <option value="art">예체능</option>
+                            <option value="other_major">기타</option>
+                        </select>
+                    </td>
+                </tr>
+            </table>
+        </form>
+    </div>
+    
+</body>
+</html>

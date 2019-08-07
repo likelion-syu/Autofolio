@@ -12,9 +12,11 @@ class Portfolio(models.Model):
     title = models.CharField(max_length=200)
     # 생성 일자
     created_dt = models.DateTimeField(default=timezone.now)
+    # 작성자 
+    author = models.ForeignKey(User , on_delete=models.CASCADE , related_name="portfolio_author")
     
     # 포트폴리오와 연결된 드래프트의 아이디
-    draft_id = models.ForeignKey(Draft , on_delete=models.CASCADE)
+    draft_id = models.ForeignKey(Draft , on_delete=models.CASCADE )
     # 포트폴리오와 연결된 theme 아이디도 필요함 
 
     # 사용여부 
@@ -23,7 +25,7 @@ class Portfolio(models.Model):
     # 최종 수정 일자
     last_modified_dt = models.DateTimeField(default = timezone.now)
     # 최종 수정자 번호 
-    last_modified_user=  models.ForeignKey(User , on_delete=models.CASCADE)
+    last_modified_user=  models.ForeignKey(User , on_delete=models.CASCADE , related_name="last_modified_user")
 
 # 생성된 서브도메인 관리용
 class Subdomain(models.Model):
