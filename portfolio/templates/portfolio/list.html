@@ -1,5 +1,27 @@
 {% extends 'common/base.html' %}
+{% load staticfiles %}
+
+{% block head %}
+<link rel="stylesheet" href="{% static 'common/bower_components/swiper/dist/css/swiper.css' %}">
+<script type='text/javascript' src="{% static 'common/bower_components/swiper/dist/js/swiper.js' %}"></script>
+
+<link rel="stylesheet" href="{% static 'portfolio/css/list.css' %}">
+<script type="text/javascript" src="{% static 'portfolio/js/list.js' %}"></script>
+{% endblock %}
 
 {% block body %}
-<h1>portfolio list page</h1>
+
+<div class="portfolio-list" ng-controller="pListCtrl">
+    <div class="list-wrapper container">
+        <div class="list-header">
+            <div class="row">
+                <div class="col"></div>
+            </div>
+        </div>
+        <div class="list-items">
+
+        </div>
+    </div>
+</div>
+
 {% endblock %}
