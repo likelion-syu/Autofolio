@@ -14,10 +14,13 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
+from django.urls import path, include
+
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('draft/', include('draft.urls')),
 ]
 
 # 업로드된 이미지를 가져오기 위한 url 설정
