@@ -31,6 +31,8 @@ ALLOWED_HOSTS = ['*','ec2-18-219-198-186.us-east-2.compute.amazonaws.com']
 # Application definition
 
 INSTALLED_APPS = [
+    'account',
+    
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -39,7 +41,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     
     
-    'account',
+    
     'draft',
     'portfolio',
     'theme',
@@ -145,3 +147,6 @@ MEDIA_URL = '/media/' # 항상 / 로 끝나도록 설정
 
 # 업로드된 파일을 저장할 디렉토리 경로
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+# Account 설정
+AUTH_USER_MODEL = 'account.Account'

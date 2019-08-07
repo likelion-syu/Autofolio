@@ -3,6 +3,37 @@
 {% block body %}
 <h1>index page</h1>
 
+<h2>Sign up</h2>
+<form method="POST" action="{% url 'signup' %}">
+	{% csrf_token %}
+	<label>Email</label><br>
+	<input type="text" name="email"/><br>
+	<label>Password</label><br>
+	<input type="password" name="password" /><br>
+	<label>Password Confirm</label><br>
+	<input type="password" name="password_confirm" /><br>
+	<input type="submit" value="Sign up" /><br>
+</form>
+
+<h2>Sign in</h2>
+<form method="POST" action="{% url 'signin' %}">
+	{% csrf_token %}
+	<label>Email</label><br>
+	<input type="text" name="useremail"/><br>
+	<label>Password</label><br>
+	<input type="password" name="password" /><br>
+	<input type="submit" value="Login" /><br>
+</form>
+
+
+<h2>Account</h2>
+<ul>
+	<li><a href="{% url 'main' %}">main</a></li>
+	<li><a href="{% url 'account_find' %}">account_find</a></li>
+	<li><a href="{% url 'account_detail' %}">account_detail</a></li>
+	<li><a href="{% url 'account_edit' %}">account_edit</a></li>
+</ul>
+
 <h2>Portfolio</h2>
 <ul>
 	<li><a href="{% url 'portfolio_list' %}">portfolio_list</a></li>
@@ -14,10 +45,5 @@
 <ul>
 	<li><a href="{% url 'draft_list' %}">draft_list</a></li>
 	<li><a href="{% url 'draft_detail' %}">draft_detail</a></li>
-</ul>
-
-<h2>Account</h2>
-<ul>
-	<li><a href="{% url 'main' %}">main</a></li>
 </ul>
 {% endblock %}
