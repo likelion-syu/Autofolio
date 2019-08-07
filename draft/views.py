@@ -1,10 +1,13 @@
 from django.shortcuts import render
 
+# create
 def draft(request):
-    return render(request,'draft/create.html')
+    return render(request,'./draft/create.html')
 
-def draft_list(req):
-    return render(req , './draft/list.html')
+# list
+def draft_list(request):
+    return render(request , './draft/list.html')
 
-def draft_detail(req):
-    return render(req , './draft/detail.html')
+# detail
+def draft_detail(request):
+    return render(request , './draft/detail.html')
