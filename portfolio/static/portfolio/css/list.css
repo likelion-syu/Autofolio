@@ -4,10 +4,12 @@
   }
 .swiper-slide {
 
+    border-radius : 15px;
+
     height : 300px;
     text-align: center;
     font-size: 18px;
-    background: #fff;
+    background: #eee;
     /* Center slide text vertically */
     display: -webkit-box;
     display: -ms-flexbox;
@@ -23,4 +25,6 @@
     align-items: center;
 }
 
-
+.list-items .item-wrapper{
+    height : 100%;
+}
