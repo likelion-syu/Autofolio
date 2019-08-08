@@ -6,6 +6,7 @@ body {
 .section-wrapper {
 	width: 100%;
 	height: 100%;
+	padding: 0px!important;
 	/* padding: 20px; */
 }
 .section-container {
@@ -29,6 +30,13 @@ body {
 .title {
 	background-color: #f8cbad;
 	height: 100vh!important;
+}
+.title h1 {
+	font-size: 5.5rem;
+	font-weight: 700;
+}
+.title h2 {
+	font-size: 1.5rem;
 }
 .titletext-container {
 	margin: 0;
