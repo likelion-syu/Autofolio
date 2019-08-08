@@ -8,7 +8,7 @@ urlpatterns = [
     path('account/' , include('account.urls')),
     path('portfolio/' , include('portfolio.urls')),
     path('draft/' , include('draft.urls')),
-    path('theme/', include('theme.urls'))
+    path('theme/', include('theme.urls')),
 ]
 
 # 업로드된 이미지를 가져오기 위한 url 설정
