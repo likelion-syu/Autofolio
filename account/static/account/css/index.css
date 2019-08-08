@@ -121,15 +121,21 @@ footer {
 	width: 100%;
 	max-width: 300px;
 	margin: 100px auto;
-	/* position: absolute; */
-	/* right: 0; */
-	/* top: 20%; */
+}
+.sign-wrapper form {
+	width: 100%;
+}
+.sign-wrapper input {
+	width: 100%;
+	height: 40px;
 }
 .signup-container, .signin-container {
 	width: 100%;
 	height: 350px;
 	border: 1px solid black;
 	display: none;
+	padding: 20px;
+	background-color: lightgray;
 }
 #signup-btn, #signin-btn {
 	width: 85px;
@@ -137,20 +143,13 @@ footer {
 	border: 1px solid black;
 	text-align: center;
 	display: inline-block;
+	background-color: gray;
 }
-
-#signup-btn {
-	
-}
-#signin-btn {
-	
-}
-
-
 
 .signform-show {
-	display: block;
+	display: flex;
+	align-items: center;
 }
 .btn-active {
-	background-color: red;
+	background-color: lightgray!important;
 }

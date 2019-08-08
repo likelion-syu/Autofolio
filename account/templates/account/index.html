@@ -7,7 +7,12 @@
 {% endblock %}
 
 {% block body %}
-
+<!-- 로그인 판단 -->
+<!-- {//% if user.is_authenticated %}
+<script>
+	window.history.back();
+</script>
+{//% else %} -->
 <div class="section-wrapper">
 	<div class="section-container title">
 		<div class="section-inner-container">
@@ -107,27 +112,5 @@
 		<p>sahmyook@likelion.org</p>
 	</div>
 </footer>
-
-
-
-<h2>Account</h2>
-<ul>
-	<li><a href="{% url 'main' %}">main</a></li>
-	<li><a href="{% url 'account_find' %}">account_find</a></li>
-	<li><a href="{% url 'account_detail' %}">account_detail</a></li>
-	<li><a href="{% url 'account_edit' %}">account_edit</a></li>
-</ul>
-
-<h2>Portfolio</h2>
-<ul>
-	<li><a href="{% url 'portfolio_list' %}">portfolio_list</a></li>
-	<li><a href="{% url 'portfolio_preview' %}">portfolio_preview</a></li>
-</ul>
-
-<h2>Draft</h2>
-<ul>
-	<li><a href="{% url 'draft_list' %}">draft_list</a></li>
-	<li><a href="{% url 'draft_detail' %}">draft_detail</a></li>
-</ul>
-
+<!-- {//% endif %} -->
 {% endblock %}
