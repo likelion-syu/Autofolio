@@ -11,23 +11,33 @@
     <link rel="stylesheet" href="{% static 'common/bower_components/bootstrap/dist/css/bootstrap.min.css' %}">
     <link rel="stylesheet" href="{% static 'common/bower_components/font-awesome/css/all.css' %}">
     
+    <link rel="stylesheet" href="{% static 'common/css/common.css' %}">
+
     <script type='text/javascript' src="{% static 'common/bower_components/jquery/dist/jquery.min.js' %}"></script>
     <script type='text/javascript' src="{% static 'common/bower_components/angular/angular.js' %}"></script>
     <script type='text/javascript' src="{% static 'common/bower_components/font-awesome/js/all.min.js' %}"></script>
     <script type='text/javascript' src="{% static 'common/bower_components/bootstrap/dist/js/bootstrap.js' %}"></script>
     
+    <script type='text/javascript' src="{% static 'common/js/moment-with-locales.js' %}"></script>
+
     <script type='text/javascript'>
         // angular load
         window.__angular_app = angular.module('afapp' , [])
     </script>
-
     {% block head %}
     {% endblock %}
 </head>
 <body>
+    <!-- NAV 시작 -->
+    {% include 'common/nav.html' %}
+    <!-- NAV 종료 -->
+
+    <!-- 실제 컨텐츠 시작 -->
+    <div class="autofolio-body">
     {% block body %}
     {% endblock%}
-
+    </div>
+    <!-- 실제 컨텐츠 종료 -->
 
     {% block body-end %}
     {% endblock %}

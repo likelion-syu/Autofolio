@@ -1,0 +1,6 @@
+.navbar-dark,.bg-dark{
+    transition : .2s;
+}
+.navbar-light {
+    transition: .2s;
+}

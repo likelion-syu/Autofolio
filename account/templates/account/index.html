@@ -1,39 +1,58 @@
 {% extends 'common/base.html' %}
 
+{% load staticfiles %}
+
+{% block head %}
+<link rel="stylesheet" href="{% static 'account/stylesheet/index.css' %}">
+{% endblock %}
+
 {% block body %}
-<h1>index page</h1>
 
-<h2>Sign up</h2>
-<form method="POST" action="{% url 'signup' %}">
-	{% csrf_token %}
-	<label>Name</label><br>
-	<input type="text" name="username"/><br>
+<div class="section-wrapper">
+	<div class="section-container title">
+		<div class="container-inner">
+			<div class="row">
+				<div class="col-md-7">
+					<div class="titletext-container">
+						<h1>포트폴리오 작성을 손쉽고 간편하게</h1>
+						<h2>나만의 포트폴리오를 5분만에 뚝딱!</h2>
+					</div>
+				</div>
+				<div class="col-md-5">
+					<!-- 회원가입, 로그인 폼 -->
+					{% include './signform/signform.html'%}
+				</div>
+			</div>
+			
+			
+			
+		</div>
+		
+	</div>
+	<div class="section-container service">
+		<div class="container-inner">
 
-	{% if id_error %}
-	{{ id_error }}<br>
-	{% endif %}
-
-	<label>Password</label><br>
-	<input type="password" name="password" /><br>
-	<label>Password Confirm</label><br>
-	<input type="password" name="password_confirm" /><br>
-
-	{% if pwd_error %}
-	{{ pwd_error }}<br>
-	{% endif %}
+		</div>
+	</div>
+	<div class="section-container feature">
+		<div class="container-inner">
+			
+		</div>
+	</div>
+	<div class="section-container team">
+		<div class="container-inner">
+			
+		</div>
+	</div>
+	<div class="section-container contact">
+		<div class="container-inner">
+			
+		</div>
+	</div>
 	
-	<input type="submit" value="Sign up" /><br>
-</form>
+</div>
 
-<h2>Sign in</h2>
-<form method="POST" action="{% url 'signin' %}">
-	{% csrf_token %}
-	<label>Name</label><br>
-	<input type="text" name="username"/><br>
-	<label>Password</label><br>
-	<input type="password" name="password" /><br>
-	<input type="submit" value="Login" /><br>
-</form>
+
 
 
 <h2>Account</h2>
@@ -56,4 +75,5 @@
 	<li><a href="{% url 'draft_list' %}">draft_list</a></li>
 	<li><a href="{% url 'draft_detail' %}">draft_detail</a></li>
 </ul>
+
 {% endblock %}

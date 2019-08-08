@@ -1,0 +1,8 @@
+.autofolio-body{
+    /* margin-top:56px; */
+}
+/* NAVBAR FIXED 공간 만들기 */
+.autofolio-body > div{
+    /* margin-top : 56px; */
+    padding-top:56px;
+}
