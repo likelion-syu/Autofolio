@@ -35,12 +35,18 @@ class DraftResume(models.Model):
     tel = models.CharField(max_length=12)
     # 이메일
     email = models.EmailField(max_length=70, blank=True)
-    # 주소
+    # 주소 -> 도로명주소, 구주소 중 사용자가 선택한 값 하나만 받아서 저장하고 싶음
     # address
     # SNS
     SNS = models.CharField("SNS",choices=(('instagram','인스타그램'),('facebook','페이스북'),('twitter','트위터'),('tistory','티스토리'),),max_length=80)
     # sns_link
     sns_link = models.URLField(max_length=200)
+    # 재학 기간 -> 어떻게 구분해야할지 모르겠음
+    # birth
+    # 학교명 -> 여러개일 경우 어떻게?
+    school = models.CharField(max_length=30)
+    # 문과, 이과, 예체능, 기타 구분
+    major_in = models.CharField("major_in",choices=(('moon','문과'),('ee','이과'),('art','예체능'),('other_major','기타'),),max_length=80)
     # 생성 일자
     created_dt = models.DateTimeField(default=timezone.now)
     # 최종 수정 일자
