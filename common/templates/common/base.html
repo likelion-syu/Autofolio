@@ -28,12 +28,16 @@
     {% endblock %}
 </head>
 <body>
+    <!-- NAV 시작 -->
     {% include 'common/nav.html' %}
+    <!-- NAV 종료 -->
 
+    <!-- 실제 컨텐츠 시작 -->
     <div class="autofolio-body">
     {% block body %}
     {% endblock%}
     </div>
+    <!-- 실제 컨텐츠 종료 -->
 
     {% block body-end %}
     {% endblock %}

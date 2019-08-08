@@ -1,6 +1,9 @@
 {% load staticfiles %}
+
 <link rel="stylesheet" href="{% static 'common/css/nav.css' %}">
-<nav class="navbar navbar-expand-lg navbar-light fixed-top" ng-controller='afNavCtrl'
+
+<nav class="navbar navbar-expand-lg navbar-light fixed-top" 
+    ng-controller='afNavCtrl'
     ng-class="{ 'navbar-light' : !md.scrolled , 'navbar-dark bg-dark' : md.scrolled }"
     ng-init="md.scrolled = false"
 >
