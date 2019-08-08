@@ -25,8 +25,18 @@
                     <div class="form-group">
                         <label for="portfolio_tags">포트폴리오 연관 태그</label>
                         <!-- <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password"> -->
-                        <div class="form-control">
-                            <input type="text" name="portfolio_tags" id="portfolio_tags">
+                        <div class="form-control tags-wrapper">
+                            <div class="row px-2 align-items-center tags-container">
+                                <div class="col-auto px-1" ng-repeat="item in md.tags.list track by $index">
+                                    <span class="badge badge-primary px-2"> 
+                                        <span ng-bind="item"></span>
+                                        <i class="ml-1 fas fa-times-circle" ng-click="fn.tags.remove($index);"></i>
+                                    </span>
+                                </div>
+                                <div class="col px-1">
+                                    <input type="text" name="portfolio_tags" id="portfolio_tags" ng-model="md.tags.input" kr-input ng-keyup="fn.tags.insert($event)" placeholder="태그를 입력해주세요">
+                                </div>
+                            </div>
                         </div>
                     </div>    
                     <div class="form-group">
