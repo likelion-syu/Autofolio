@@ -15,6 +15,17 @@
     border:none;
 }
 
-.tags-container input:focus{
-    outline:none;
+.portfolio-content-wrapper .draft-list{
+    height : 200px;
+    overflow-y : auto;
+}
+
+.portfolio-content-wrapper .draft-search input{
+    width : 100%;
+    border:none;
+}
+
+.portfolio-content-wrapper .theme-list-wrapper .swiper-slide{
+    height : 300px;
+    background-color : #eee;
 }

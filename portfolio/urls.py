@@ -4,8 +4,8 @@ from . import views
 
 urlpatterns = [
 	path('list' , views.portfolio_list , name="portfolio_list"),
-	path('detail' , views.portfolio_detail , name="portfolio_detail"),
 	path('preview' , views.portfolio_preview , name="portfolio_preview"),
 	path('create' , views.portfolio_create , name="portfolio_create"),
-	path('update' , views.portfolio_update , name="portfolio_update"),
+	path('update/<int:portfolio_id>' , views.portfolio_update , name="portfolio_update"),
+	path('api/create' , views.api_create , name="portfolio_api_create"),
 ]
