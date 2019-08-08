@@ -4,6 +4,7 @@ from django.contrib.auth.models import User , Group
 
 # 드래프트 모델을 불러옴
 from draft.models import Draft
+from theme.models import Theme
 
 # 실제 생성된 포트폴리오
 #  : 본 테이블의 내용은 실제 홈페이지 개설 정보와 일치함
@@ -16,8 +17,11 @@ class Portfolio(models.Model):
     author = models.ForeignKey(User , on_delete=models.CASCADE , related_name="portfolio_author")
     
     # 포트폴리오와 연결된 드래프트의 아이디
-    draft_id = models.ForeignKey(Draft , on_delete=models.CASCADE )
+    draft = models.ForeignKey(Draft , on_delete=models.CASCADE)
     # 포트폴리오와 연결된 theme 아이디도 필요함 
+    theme = models.ForeignKey(Theme , on_delete=models.CASCADE)
+
+    tags = models.CharField(blank=True ,max_length=1000)
 
     # 사용여부 
     # 1 : 사용함 0 : 사용 안함 
