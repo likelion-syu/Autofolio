@@ -33,9 +33,14 @@ class DraftResume(models.Model):
     gender = models.CharField("성별",choices=(('male','남자'),('female','여자'),('other','기타'),),max_length=80)
     # 핸드폰 번호
     tel = models.CharField(max_length=12)
-    #이메일
+    # 이메일
     email = models.EmailField(max_length=70, blank=True)
-
+    # 주소
+    # address
+    # SNS
+    SNS = models.CharField("SNS", choices(('instagram','인스타그램'),('facebook','페이스북'),('twitter','트위터'),('tistory','티스토리'),),max_length=80)
+    # sns_link
+    sns_link = models.URLField(max_length=200)
     # 생성 일자
     created_dt = models.DateTimeField(default=timezone.now)
     # 최종 수정 일자
