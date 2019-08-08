@@ -3,14 +3,14 @@
 {% load staticfiles %}
 
 {% block head %}
-<link rel="stylesheet" href="{% static 'account/stylesheet/index.css' %}">
+<link rel="stylesheet" href="{% static 'account/css/index.css' %}">
 {% endblock %}
 
 {% block body %}
 
 <div class="section-wrapper">
 	<div class="section-container title">
-		<div class="container-inner">
+		<div class="section-inner-container">
 			<div class="row">
 				<div class="col-md-7">
 					<div class="titletext-container">
@@ -23,35 +23,90 @@
 					{% include './signform/signform.html'%}
 				</div>
 			</div>
-			
-			
-			
 		</div>
 		
 	</div>
 	<div class="section-container service">
-		<div class="container-inner">
-
+		<div class="section-inner-container">
+			<div class="row">
+				<div class="col-md-5">
+					<div class="service-img"></div>
+				</div>
+				<div class="col-md-7">
+					<div class="titletext-container text-right">
+						<h1>언제 어디서나 포트올리오 관리</h1>
+						<h2>WEB Mobile 환경을 넘나드며 나의 포트올리오를 관리한다.</h2>
+					</div>
+				</div>
+			</div>
 		</div>
 	</div>
 	<div class="section-container feature">
-		<div class="container-inner">
-			
+		<div class="section-inner-container">
+			<div class="container">
+				<div class="row feature-text">
+					<h1>너무나도 쉬운 포트올리오 작성</h1>
+					<h2>실험결과 미취학 아동들 또한 5분만에 자신의 포트폴리오를 뚝딱뚝딱 완성할 수 있었다.</h2>
+				</div>
+				<div class="row feature-text">
+					<h1>무궁무진한 포트폴리오 스킨</h1>
+					<h2>자신의 취향, 기업의 분위기에 맞게 포트폴리오 형태에 변화를 줄 수 있다.</h2>
+				</div>
+				<div class="row feature-text">
+					<h1>기업이 가장 선호하는 포트폴리오</h1>
+					<h2>2019년 무슨무슨 조사결과 대기업이 가장 선호하는 포트폴리오 플랫폼으로 선정</h2>
+				</div>
+			</div>
 		</div>
 	</div>
 	<div class="section-container team">
-		<div class="container-inner">
-			
+		<div class="section-inner-container">
+			<div class="row">
+				<div class="container">
+					<div class="row team-text">
+						<h1>개쩌는 팀으로 구성되어 있다.</h1>
+						<h2>이 프로젝트의 개발을 시작한 것은 단 3일 이다. 멋사 고인물 운영진들과 현직자를 포함한 정예멤버로 구성된 팀은, 우리의 비전을 순식간에 구현 하였습니다. 프로젝트 설계와 기획 코딩 모두 문제 없다 자 덤벼라! 분위기도 좋고, 능률도 매우 높은 우리팀과 함께 하실 수 있습니다.</h2>
+					</div>
+				</div>
+			</div>
 		</div>
+		<div class="bg-team"></div>
 	</div>
 	<div class="section-container contact">
-		<div class="container-inner">
-			
+		<div class="section-inner-container">
+			<div class="container">
+				<div class="row">		
+					<table>
+						<tr><td><h1>Contact</h1></td></tr>
+						<tr>
+							<th>고객문의</th>
+							<td>sahmyook@likelion.org</td>
+						</tr>
+						<tr>
+							<th>팀 지원 문의</th>
+							<td>sahmyook@likelion.org</td>
+						</tr>
+						<tr>
+							<th>제휴 문의</th>
+							<td>sahmyook@likelion.org</td>
+						</tr>
+						<tr>
+							<th>주소</th>
+							<td>서울특별시 노원구 공릉동 삼육대학교 학생회관 307호</td>
+						</tr>
+					</table>
+				</div>
+			</div>
 		</div>
 	</div>
-	
 </div>
-
+<footer>
+	<div class="container">
+		<p>© 2019 Autofolio Allright reserved | 김혜원  배성현  유경수  위보람</p>
+		<p>서울특별시 노원구 공릉동 삼육대학교 학생회관 307호</p>
+		<p>sahmyook@likelion.org</p>
+	</div>
+</footer>
 
 
 

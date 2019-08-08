@@ -1,6 +1,8 @@
 <div class="sign-wrapper show">
-	<div id="signup-btn" class="btn-active">Sign up</div>
-	<div id="signin-btn">Sign in</div>
+	<div class="signform-btn-wrapper">
+		<div id="signup-btn" class="btn-active">Sign up</div>
+		<div id="signin-btn">Sign in</div>
+	</div>
 	<div class="signup-container signform-show">
 		<form method="POST" action="{% url 'signup' %}">
 			{% csrf_token %}
