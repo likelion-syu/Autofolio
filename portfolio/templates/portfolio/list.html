@@ -12,7 +12,7 @@
 {% block body %}
 
 <div class="portfolio-list" ng-controller="pListCtrl">
-    <div class="list-wrapper container mt-5">
+    <div class="list-wrapper container py-5">
         <div class="list-header">
             <div class="row">
                 <div class="col-4 align-self-center">
@@ -41,13 +41,17 @@
                                         <i class="fas fa-times"></i>
                                     </div>
                                     <div class="text-center pr-3 item-header-edit" >
-                                        <a ng-href="{{ item.fields.length }}" ></a>
-                                        <i class="fas fa-edit"></i>
+                                        <a href="">
+                                            <i class="fas fa-edit"></i>
+                                        </a>
                                     </div>
                                     <div class="item-header-cover">
                                     </div>
                                 </div>
                                 <div class="thumbnail bg-warning">
+                                    <div class='row p-0 m-0'>
+                                        <img class='col p-0 ' ng-src="/media/[[md.theme.list[$index].fields.thumbnail  ]]">
+                                    </div>
                                 </div>
                             </div>  
                             <div class="item-content container">
@@ -105,6 +109,7 @@
         window.__model = {};
         window.__model.drafts_count = Number('{{drafts_count}}');
         window.__model.portfolios_serialized = JSON.parse('{{ portfolios_serialized }}'.replace(/&quot;/g,'"'));
+        window.__model.portfolios_related_serialized = JSON.parse('{{ portfolios_related_serialized }}'.replace(/&quot;/g,'"'));
         
         window.__angular.ext.init();
     });

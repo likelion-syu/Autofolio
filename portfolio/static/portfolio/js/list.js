@@ -20,6 +20,9 @@ window.__angular.module
         },
         drafts : {
             count : 0
+        },
+        theme :{
+            list : []
         }
     }
 
@@ -41,7 +44,7 @@ window.__angular.module
                     });
                 }
             },
-            repeat : function(item){
+            repeat : function(item , elem){
                 if(item.fields && item.fields.tags){
                     let splitted = item.fields.tags.split(',');
                     item.tags_splitted = splitted;
@@ -49,6 +52,8 @@ window.__angular.module
                 else{
                     item.tags_splitted = [];
                 }
+                let anchorTag = elem.find('.item-header-edit a');
+                anchorTag.prop("href" , '/portfolio/update/' + item.pk);
             }
         }
     }
@@ -57,6 +62,8 @@ window.__angular.module
         init : function(){
             $s.md.portfolios.items = window.__model.portfolios_serialized;
             $s.md.drafts.count = window.__model.drafts_count;
+            $s.md.theme.list = window.__model.portfolios_related_serialized;
+            console.log($s.md.theme.list)
             $s.$apply();    
 
             $s.fn.init();

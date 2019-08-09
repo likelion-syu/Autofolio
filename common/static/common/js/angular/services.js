@@ -10,6 +10,9 @@ window.__angular.module
             'create' : {
                 url : '/portfolio/api/create',
             },
+            'update' : {
+                url : '/portfolio/api/update',
+            }
         },
         list : {
             'delete' : {
@@ -31,6 +34,14 @@ window.__angular.module
                     data : data
                 });
             },
+            update : function(data){
+                return $http({
+                    method : config.method , 
+                    url : config.detail.update.url,
+                    headers : config.headers,
+                    data : data
+                })
+            }
         },
         list : {
             get : function(){

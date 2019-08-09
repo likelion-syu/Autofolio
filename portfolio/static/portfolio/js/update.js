@@ -13,29 +13,13 @@ window.__angular.module
         }
     };
 })
-.service('pDetailService' , ['$http' , function($http){
-    let config = {
-        url : '/portfolio/api/create',
-        method : 'POST'
-    }    
-    return {
-        create : function(data){
-            return $http({
-                method : config.method,
-                url : config.url,
-                data : data,
-                headers : {
-                    'Content-Type' : 'application/json'
-                }
-            });
-        }
-    }
-}])
-.controller('pDetailCtrl' , ['$scope' , 'pDetailService' , 'pService' , function($s , $conn , $serv){
+.controller('pUpdateCtrl' , ['$scope' , 'pService' , ($s , $serv) =>{
     
     $s.md = {
         title : '',
+        pk : -1,
         share_state : false,
+        portfolio : {},
         tags : {
             list : [],
             input : ""
@@ -52,8 +36,34 @@ window.__angular.module
     }
     $s.fn = {
         set : function(){
+            // $s.md.portfolio = window.__model.portfolio_serialized;
+            let portfolio = window.__model.portfolio_serialized[0].fields;
+            
+            $s.md.title = portfolio.title;
+            $s.md.pk = window.__model.portfolio_serialized[0].pk;
+            if(portfolio.tags !== ''){
+                let splitted = portfolio.tags.split(',');
+                splitted.map(item =>{
+                    $s.md.tags.list.push(item);
+                });
+            }
+
             $s.md.themes.list = window.__model.themes_serialized;
             $s.md.drafts.list = window.__model.drafts_serialized;
+
+            $s.md.drafts.list.map(item=>{
+                // console.log(item.pk === portfolio.draft);
+                if(item.pk === portfolio.draft){
+                    $s.md.drafts.selected = item;
+                }
+            });
+
+            $s.md.themes.list.map(item=>{
+                if(item.pk === portfolio.theme){
+                    $s.md.themes.selected = item;
+                }
+            });
+
             $s.$apply();
         },
         drafts : {
@@ -120,17 +130,20 @@ window.__angular.module
                     data.title = $s.md.title.trim();
                     data.share_state = $s.md.share_state;
                     data.tags = $s.md.tags.list.join();
-                    data.draft = $s.md.drafts.selected;
-                    data.theme = $s.md.themes.selected;
-                    $serv.detail.create(data)
+                    data.draft = $s.md.drafts.selected.pk;
+                    data.theme = $s.md.themes.selected.pk;                    
+                    data.pk = $s.md.pk;
+
+                    $serv.detail.update(data)
                     .then(function(res){
-                        if(res.data.result === 1){
-                            alert('생성되었습니다.');
-                            location.href= "/portfolio";
+                        console.log(res);
+                        if(res.data.result > 0){
+                            alert('수정되었습니다.');
+                            location.href= "/portfolio"; 
                         }
-                    })
+                    });
                 }
-                console.log($s.md);
+                // console.log($s.md);
             }
         },
         init : function(){

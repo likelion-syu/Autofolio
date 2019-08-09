@@ -6,6 +6,12 @@ from django.contrib.auth.models import User , Group
 from draft.models import Draft
 from theme.models import Theme
 
+# 파일 저장 관련 주소생성 함수 
+def directory_path_by_user(instance , filename):
+    # file will be uploaded to MEDIA_ROOT/user_<id>/<filename>
+    now = timezone.now()
+    return '{0}/user_{1}/{2}'.format(now.strftime('%Y%m') , instance.author.id , filename)
+
 # 실제 생성된 포트폴리오
 #  : 본 테이블의 내용은 실제 홈페이지 개설 정보와 일치함
 class Portfolio(models.Model):

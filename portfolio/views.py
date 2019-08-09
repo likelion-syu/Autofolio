@@ -12,12 +12,15 @@ def portfolio_list(req):
     # 현재 생성된 draft의 수를 확인
     drafts_count = Draft.objects.filter(author=req.user).count()
     portfolios = Portfolio.objects.filter(author=req.user).all()
+    portfolios_related = Portfolio.objects.filter(author=req.user).select_related('theme')
+
     portfolios_count = portfolios.count()
     
     return render(req , './portfolio/list.html' , {
         'drafts_count' : drafts_count,
         'portfolios' : portfolios,
         'portfolios_serialized' : serializers.serialize('json' , portfolios),
+        'portfolios_related_serialized' : serializers.serialize('json' , [ item.theme for item in portfolios_related ]),
         'portfolios_count' : portfolios_count
     })
 
@@ -29,19 +32,25 @@ def portfolio_create(req):
     drafts = Draft.objects.filter(author=req.user).all()
     themes = Theme.objects.all()
 
-    return render(req , './portfolio/detail.html' , {
+    return render(req , './portfolio/create.html' , {
         'type' : 'Create',
         'drafts' : drafts,
         'themes' : themes,
         'drafts_serialized' : serializers.serialize('json' , drafts),
         'themes_serialized' : serializers.serialize('json' , themes)
-    })
 
+    })
+    
 def portfolio_update(req , portfolio_id):
-    return render(req , './portfolio/detail.html' , {
+    portfolio = Portfolio.objects.filter(pk=portfolio_id).all()
+    drafts = Draft.objects.filter(author=req.user).all()
+    themes = Theme.objects.all()
+
+    return render(req , './portfolio/update.html' , {
         'type' : 'Update',
         'drafts' : drafts,
         'themes' : themes,
+        'portfolio_serialized' : serializers.serialize('json', portfolio),
         'drafts_serialized' : serializers.serialize('json' , drafts),
         'themes_serialized' : serializers.serialize('json' , themes),
     })
@@ -86,7 +95,7 @@ def api_create(req):
 @csrf_exempt
 def api_delete(req):
     data = json.loads(req.body)
-    print(data)
+    
     try:
         portfolio = Portfolio.objects.get(pk = data['pk'])
         portfolio.delete()
@@ -104,6 +113,17 @@ def api_delete(req):
 
 @csrf_exempt
 def api_update(req):
+    data = json.loads(req.body)
+    currentPortfolio = get_object_or_404(Portfolio , pk=data['pk'])
+    currentPortfolio.title = data['title']
+    currentPortfolio.draft = get_object_or_404(Draft , pk=data["draft"])
+    currentPortfolio.theme = get_object_or_404(Theme , pk=data["theme"])
+    currentPortfolio.tags = data['tags']
+    currentPortfolio.last_modified_user = req.user
+    currentPortfolio.last_modified_dt = timezone.datetime.now()
+
+    currentPortfolio.save()
+    
     return JsonResponse({
         'result' : 1,
         'mesg' : '업데이트가 완료되었습니다.'
