@@ -52,7 +52,7 @@ body {
 	margin: 0;
 	padding: 0px 20px;
 	width: 100%;
-	max-width: 620px;
+	max-width: 740px;
 }
 /* text */
 .title .col-md-7 {
@@ -96,7 +96,7 @@ body {
 .feature-text {
 	margin: 150px auto;
 	width: 100%;
-	max-width: 620px;
+	max-width: 740px;
 }
 
 /* team */
@@ -106,7 +106,7 @@ body {
 .team-text {
 	margin: 150px auto 50px;
 	width: 100%;
-	max-width: 620px;
+	max-width: 740px;
 }
 .bg-team {
 	background-image: url('../img/teambg.jpeg');
@@ -128,9 +128,9 @@ body {
 .contact table {
 	height: 300px;
 	width: 100%;
-	max-width: 620px;
+	max-width: 740px;
 }
-.contact table > th, td {
+.contact table th,td {
 	font-size: 1.2rem;
 }
 
@@ -172,11 +172,13 @@ footer {
 	display: inline-block;
 	background-color: gray;
 }
-
 .signform-show {
 	display: flex;
 	align-items: center;
 }
 .btn-active {
 	background-color: lightgray!important;
+}
+.sign-notice {
+	font-size: 0.8rem;
 }
