@@ -41,7 +41,7 @@ window.__angular.module
                     });
                 }
             },
-            repeat : function(item){
+            repeat : function(item , elem){
                 if(item.fields && item.fields.tags){
                     let splitted = item.fields.tags.split(',');
                     item.tags_splitted = splitted;
@@ -49,6 +49,8 @@ window.__angular.module
                 else{
                     item.tags_splitted = [];
                 }
+                let anchorTag = elem.find('.item-header-edit a');
+                anchorTag.prop("href" , '/portfolio/update/' + item.pk);
             }
         }
     }

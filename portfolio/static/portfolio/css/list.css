@@ -1,7 +1,7 @@
 .swiper-container {
     width: 100%;
     height: 100%;
-  }
+}
 .swiper-slide {
 
     border-radius : 15px;
@@ -31,7 +31,7 @@
 
 .portfolio-list {
     width : 100%;
-    height : 100%;
+    min-height : 100%;
     background : linear-gradient(to right , rgb(217,239,209) 0%, rgb(217,239,209) 30%, #fff 30%, #fff 30%)
 }
 
@@ -69,6 +69,13 @@
     font-size: 3em;
     color: white;
 }
+
+.list-items .item-wrapper .item-header .item-header-cover-container .item-header-edit a
+{
+    text-decoration: none;
+    color : #fff;
+}
+
 .list-items .item-wrapper .item-header .item-header-cover-container .item-header-cover{
     width: 100%;
     height: 200px;

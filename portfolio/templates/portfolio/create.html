@@ -1,0 +1,114 @@
+{% extends 'common/base.html' %}
+{% load staticfiles %}
+
+{% block head %}
+<title>Autofolio | Portfolio {{ type }}</title>
+<link rel="stylesheet" href="{% static 'common/bower_components/swiper/dist/css/swiper.css' %}">
+<script type='text/javascript' src="{% static 'common/bower_components/swiper/dist/js/swiper.js' %}"></script>
+
+<link rel="stylesheet" href="{% static 'portfolio/css/detail.css' %}">
+<script type='text/javascript' src="{% static 'portfolio/js/detail.js' %}"></script>
+{% endblock %}
+
+{% block body %}
+<div class="portfolio-detail" ng-controller="pDetailCtrl">
+    <div class="container py-5">
+        <div class="portfolio-header">
+            <h3>
+                포트폴리오 생성하기
+            </h3>               
+        </div>
+        <div class="portfolio-content-wrapper">
+            <div class="container">
+                <div class="form-group">
+                    <label for="portfolio_title">포트폴리오 제목</label>
+                    <input type="text" class="form-control" id="portfolio_title" aria-describedby="portfolio title" placeholder="포트폴리오 제목을 입력해주세요" name="portfolio_title" ng-model='md.title'>
+                    <!-- <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small> -->
+                </div>
+                <div class="form-group">
+                    <label for="portfolio_tags">포트폴리오 연관 태그</label>
+                    <div class="form-control tags-wrapper">
+                        <div class="row px-2 align-items-center tags-container">
+                            <div class="col-auto px-1" ng-repeat="item in md.tags.list track by $index" ng-cloak>
+                                <span class="badge badge-primary px-2"> 
+                                    <span ng-bind="item"></span>
+                                    <i class="ml-1 fas fa-times-circle" ng-click="fn.tags.remove($index);"></i>
+                                </span>
+                            </div>
+                            <div class="col px-1">
+                                <input type="text" name="portfolio_tags" id="portfolio_tags" ng-model="md.tags.input" kr-input ng-keyup="fn.tags.insert($event)" placeholder="태그를 입력해주세요">
+                            </div>
+                        </div>
+                    </div>
+                    <small id="emailHelp" class="form-text text-muted">태그는 5개까지 입력할 수 있습니다.</small>
+                </div>    
+                <div class="form-group draft-search">
+                    <label for="exampleInputEmail1">드래프트</label>
+                    <!-- <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="드래프트를 선택해주세요"> -->
+                    <div class="form-control " ng-hide="true">
+                        <div class="row">
+                            <div class="col">
+                                <input type="text" aria-describedby="emailHelp" placeholder="드래프트를 검색해주세요" ng-model="md.drafts.search">
+                            </div>
+                            <div class="col-auto">
+                                <i class="fas fa-search"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <small id="emailHelp" class="form-text text-muted">포트폴리오를 생성할 드래프트를 선택해주세요</small>
+                </div>
+                <div class="form-group draft-list">
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item" ng-repeat="item in md.drafts.list" ng-click='fn.drafts.select(item)' ng-class="{ 'bg-success text-sucess' : item.pk === md.drafts.selected.pk }">
+                            <span ng-bind="item.fields.title"></span>
+                            <span ng-bind='item.fields.created_dt'></span>
+                        </li>
+                    </ul>
+                </div>
+                <div class="form-group theme-list-wrapper">
+                    <label for="exampleInputEmail1">테마 (<span ng-bind='md.themes.list.length'></span>)</label>          
+                    <div class="row">
+                        <div class="col">
+                            <!-- 테마 리스트 시작 -->
+                            <div class="swiper-container">
+                                <div class="swiper-wrapper" >
+                                    
+                                    <div class="swiper-slide" ng-repeat="item in md.themes.list track by $index" my-repeat-directive ng-class="{ 'bg-success text-sucess' : item.pk === md.themes.selected.pk }">
+                                        <span ng-bind="item.fields.title"></span>
+                                        <button type='button' ng-click='fn.themes.select(item)'>click</button>
+                                    </div>
+                                </div>
+                                <div class="swiper-pagination"></div>
+                            </div>
+                            <!-- 테마 리스트 종료 -->
+                        </div>
+                    </div>
+                </div>
+                <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="" id="defaultCheck2" ng-model='md.share_state'>
+                    <label class="form-check-label" for="defaultCheck2">
+                        공유버튼 표시
+                    </label>
+                    <small id="emailHelp" class="form-text text-muted">공유버튼 표기 여부를 결정합니다.(소셜 공유 , 링크 복사)</small>
+                </div>
+                <div class="form-group mt-5 text-center">
+                    <a href="{% url 'portfolio_list' %}" role="button" class="btn btn-md btn-secondary mr-3">돌아가기</a>
+                    <button type='button' class='btn btn-md btn-success mr-3'>미리보기</button>
+                    <button type='button' class='btn btn-md btn-primary' ng-click='fn.common.submit()'>포트폴리오 생성</button>
+                </div>
+            </div>
+        
+        </div>
+    </div>
+</div>
+
+<script>
+    $(document).ready(()=>{
+        window.__model = {};
+        window.__model.drafts_serialized = JSON.parse('{{drafts_serialized}}'.replace(/&quot;/g,'"'));
+        window.__model.themes_serialized = JSON.parse('{{themes_serialized}}'.replace(/&quot;/g,'"'));
+        
+        window.__angular.ext.set();
+    });
+</script>
+{% endblock %}
