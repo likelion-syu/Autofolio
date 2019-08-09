@@ -33,23 +33,21 @@
         <div class="list-items container">
             <div class="items pt-5">
                 <div class="row justify-content-start">
-                    
                     <div class="col-4 item-container px-2 mb-3" ng-repeat="item in md.portfolios.items track by $index" run-per-repeating="fn.list.repeat" run-per-repeating-source="item">
                         <div class="item-wrapper">
                             <div class="item-header">
                                 <div class="item-header-cover-container pr-3">
-                                    <div class="float-right mr-3 mt-2" ng-click="fn.list.close()">
+                                    <div class="float-right mr-3 mt-2" ng-click="fn.list.del(item)" onclick='console.log("Hello")'>
                                         <i class="fas fa-times"></i>
                                     </div>
-                                    <div class="text-center pr-3 item-header-edit">
+                                    <div class="text-center pr-3 item-header-edit" >
+                                        <a ng-href="{{ item.fields.length }}" ></a>
                                         <i class="fas fa-edit"></i>
                                     </div>
                                     <div class="item-header-cover">
-
                                     </div>
                                 </div>
                                 <div class="thumbnail bg-warning">
-    
                                 </div>
                             </div>  
                             <div class="item-content container">
@@ -94,7 +92,6 @@
     </div>
 </div>
       
-
 {% endblock %}
 
 {% block body-end %}
@@ -109,11 +106,7 @@
         window.__model.drafts_count = Number('{{drafts_count}}');
         window.__model.portfolios_serialized = JSON.parse('{{ portfolios_serialized }}'.replace(/&quot;/g,'"'));
         
-        window.__angular.init();
-
-        // if(count === 0){
-        //     $('#btn-modal-toggle').click();
-        // }
+        window.__angular.ext.init();
     });
 
 </script>
