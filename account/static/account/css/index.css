@@ -73,9 +73,17 @@ body {
 	width: 100%;
 	max-width: 350px;
 	height: 100%;
-	background-color: lightgray;
+	background-color: white;
 	border-radius: 30px;
 	margin: auto;
+	display: flex;
+	align-items: center;
+}
+.service-screen {
+	width: 90%;
+    background-color: black;
+    height: 79%;
+    margin: auto;
 }
 .service .col-md-5 {
 	min-height: 600px;
@@ -171,6 +179,7 @@ footer {
 	text-align: center;
 	display: inline-block;
 	background-color: gray;
+	line-height: 28px;
 }
 .signform-show {
 	display: flex;
