@@ -4,12 +4,12 @@
 
 <nav class="navbar navbar-expand-lg navbar-light fixed-top" 
     ng-controller='afNavCtrl'
-    ng-class="{ 'navbar-light' : !md.scrolled , 'navbar-dark bg-dark' : md.scrolled }"
+    ng-class="{ 'navbar-light' : !md.scrolled , 'navbar-light nav-active' : md.scrolled }"
     ng-init="md.scrolled = false"
 >
     <div class="container">
         <a class="navbar-brand" href="{% url 'main' %}">
-            Autofolio <i class="fas fa-magic"></i>
+            Autofolio
         </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
