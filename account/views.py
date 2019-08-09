@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.models import User
 from django.contrib import auth
 
@@ -51,8 +51,9 @@ def logout(req):
 def account_find(req):
     return render(req, './account/find.html')
 
-def account_detail(req):
-    return render(req, './account/detail.html')   
+def account_detail(req, user_id):
+    account_detail = get_object_or_404(User, pk=user_id)
+    return render(req, './account/detail.html', {'user':account_detail})   
 
-def account_edit(req):
+def account_edit(req, user):
     return render(req, './account/edit.html')   

@@ -1,40 +1,42 @@
 <div class="sign-wrapper show">
 	<div class="signform-btn-wrapper">
-		<div id="signup-btn" class="btn-active">Sign up</div>
-		<div id="signin-btn">Sign in</div>
+		<div id="signup-btn" class="btn-active">회원가입</div>
+		<div id="signin-btn">로그인</div>
 	</div>
 	<div class="signup-container signform-show">
 		<form method="POST" action="{% url 'signup' %}">
 			{% csrf_token %}
-			<label>Name</label><br>
+			<label>아이디</label><br>
 			<input type="text" name="username" required="ture"/><br>
 		
 			{% if id_error %}
 			{{ id_error }}<br>
 			{% endif %}
 		
-			<label>Password</label><br>
+			<label>비밀번호</label><br>
 			<input type="password" name="password" required="ture"/><br>
-			<label>Password Confirm</label><br>
+			<label>비밀번호 확인</label><br>
 			<input type="password" name="password_confirm" required="ture"/><br>
 		
 			{% if pwd_error %}
 			{{ pwd_error }}<br>
 			{% endif %}
 			
-			<input type="submit" value="Sign up" class="btn btn-primary mt-3"/><br>
-			<span class="sign-notice">회원가입 진행시 Autofolio의 개인정보 취급 및 가입 약관에 동의하는 것으로 간주 합니다.</span>
+			<input type="submit" value="회원 가입" class="btn btn-success"/><br>
+			<input type="button" value="Google 간편 가입" class="btn btn-light"/><br>
+			<input type="button" value="페이스북 간편 가입" class="btn btn-primary"/><br>
+			<span class="sign-notice">회원가입 진행시 Autofolio의 <a href="#">개인정보 취급</a> 및 <a href="#">가입 약관</a>에 동의하는 것으로 간주 합니다.</span>
 		</form>
 	</div>
 	<div class="signin-container">
 		<form method="POST" action="{% url 'signin' %}">
 			{% csrf_token %}
-			<label>Name</label><br>
+			<label>아이디</label><br>
 			<input type="text" name="username" required="ture"/><br>
-			<label>Password</label><br>
+			<label>비밀번호</label><br>
 			<input type="password" name="password" required="ture"/><br>
-			<input type="submit" value="Login" class="btn btn-primary mt-3"/><br>
-			<span class="sign-notice">계정 정보를 분실하셨나요? 계정정보 찾기</span>
+			<input type="submit" value="로그인" class="btn btn-success"/><br>
+			<span class="sign-notice">계정 정보를 분실하셨나요? <a href="#">계정정보 찾기</a></span>
 	</div>
 </div>
 

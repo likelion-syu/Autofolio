@@ -1,6 +1,18 @@
+@import url('https://fonts.googleapis.com/css?family=Beth+Ellen&display=swap');
+
+a.navbar-brand {
+    font-family: 'Beth Ellen', cursive;
+}
 .navbar-dark,.bg-dark{
     transition : .2s;
 }
 .navbar-light {
     transition: .2s;
+}
+.navbar-light .navbar-toggler {
+    border-color: transparent;
+}
+.nav-active {
+    background-color: rgba(255,255,255,0.9)!important;
+    box-shadow: 0 0.0625rem 0.1875rem 0 rgba(0,0,0,0.1);
 }
