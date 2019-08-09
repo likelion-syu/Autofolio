@@ -11,7 +11,7 @@ body {
 }
 .section-container {
 	width: 100%;
-	height: 100%;
+	/* height: 100%; */
 	min-height: 600px;
 }
 .section-inner-container {
@@ -27,9 +27,10 @@ body {
 }
 .row h1 {
 	font-weight: 700;
+	font-size: 2.2rem;
 }
 .row h2 {
-	font-size: 1.3rem;
+	font-size: 1.2rem;
 	line-height: 2.2rem;
 }
 
@@ -51,6 +52,7 @@ body {
 	margin: 0;
 	padding: 0px 20px;
 	width: 100%;
+	max-width: 740px;
 }
 /* text */
 .title .col-md-7 {
@@ -93,6 +95,8 @@ body {
 }
 .feature-text {
 	margin: 150px auto;
+	width: 100%;
+	max-width: 740px;
 }
 
 /* team */
@@ -101,6 +105,8 @@ body {
 }
 .team-text {
 	margin: 150px auto 50px;
+	width: 100%;
+	max-width: 740px;
 }
 .bg-team {
 	background-image: url('../img/teambg.jpeg');
@@ -118,6 +124,14 @@ body {
 }
 .contact table {
 	margin: auto;
+}
+.contact table {
+	height: 300px;
+	width: 100%;
+	max-width: 740px;
+}
+.contact table th,td {
+	font-size: 1.2rem;
 }
 
 /* footer */
@@ -145,7 +159,7 @@ footer {
 .signup-container, .signin-container {
 	width: 100%;
 	height: 350px;
-	border: 1px solid black;
+	/* border: 1px solid black; */
 	display: none;
 	padding: 20px;
 	background-color: lightgray;
@@ -153,16 +167,18 @@ footer {
 #signup-btn, #signin-btn {
 	width: 85px;
 	height: 30px;
-	border: 1px solid black;
+	/* border: 1px solid black; */
 	text-align: center;
 	display: inline-block;
 	background-color: gray;
 }
-
 .signform-show {
 	display: flex;
 	align-items: center;
 }
 .btn-active {
 	background-color: lightgray!important;
+}
+.sign-notice {
+	font-size: 0.8rem;
 }
