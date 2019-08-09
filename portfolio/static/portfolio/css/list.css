@@ -55,6 +55,7 @@
     opacity: 0;
     transition : .2s;
     cursor: pointer;
+    z-index: 1;
 }
 .list-items .item-wrapper .item-header .item-header-cover-container:hover{
     opacity: 1;
@@ -107,6 +108,15 @@
 .list-items .fa-times{
     font-size : 1.3em;
     color: #fff;
+}
+
+.list-items .thumbnail .row{
+    overflow: hidden;
+    height: 200px;
+}
+
+.list-items .thumbnail img{
+    
 }
 
 /* background-image: linear-gradient( -28deg, #f87f73 0%, #f87f73 60%, #292423 60%, #292423 60%);

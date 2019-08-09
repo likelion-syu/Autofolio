@@ -126,7 +126,7 @@ window.__angular.module
                     .then(function(res){
                         if(res.data.result === 1){
                             alert('생성되었습니다.');
-                            location.href= "/portfolio/list";
+                            location.href= "/portfolio";
                         }
                     })
                 }

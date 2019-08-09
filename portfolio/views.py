@@ -12,12 +12,15 @@ def portfolio_list(req):
     # 현재 생성된 draft의 수를 확인
     drafts_count = Draft.objects.filter(author=req.user).count()
     portfolios = Portfolio.objects.filter(author=req.user).all()
+    portfolios_related = Portfolio.objects.filter(author=req.user).select_related('theme')
+
     portfolios_count = portfolios.count()
     
     return render(req , './portfolio/list.html' , {
         'drafts_count' : drafts_count,
         'portfolios' : portfolios,
         'portfolios_serialized' : serializers.serialize('json' , portfolios),
+        'portfolios_related_serialized' : serializers.serialize('json' , [ item.theme for item in portfolios_related ]),
         'portfolios_count' : portfolios_count
     })
 

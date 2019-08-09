@@ -139,7 +139,7 @@ window.__angular.module
                         console.log(res);
                         if(res.data.result > 0){
                             alert('수정되었습니다.');
-                            location.href= "/portfolio/list"; 
+                            location.href= "/portfolio"; 
                         }
                     });
                 }

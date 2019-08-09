@@ -58,10 +58,14 @@
                     <small id="emailHelp" class="form-text text-muted">포트폴리오를 생성할 드래프트를 선택해주세요</small>
                 </div>
                 <div class="form-group draft-list">
-                    <ul class="list-group list-group-flush">
+                    <ul class="list-group list-group">
                         <li class="list-group-item" ng-repeat="item in md.drafts.list" ng-click='fn.drafts.select(item)' ng-class="{ 'bg-success text-sucess' : item.pk === md.drafts.selected.pk }">
-                            <span ng-bind="item.fields.title"></span>
-                            <span ng-bind='item.fields.created_dt'></span>
+                            <div class="row align-items-center">
+                                <div class="col-10">
+                                    <h4 class="m-0" ng-bind="item.fields.title"></h4>
+                                </div>
+                                <div class='col-auto text-muted ' ng-bind='item.fields.created_dt'></div>
+                            </div>
                         </li>
                     </ul>
                 </div>

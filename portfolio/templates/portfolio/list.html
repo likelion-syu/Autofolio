@@ -49,6 +49,9 @@
                                     </div>
                                 </div>
                                 <div class="thumbnail bg-warning">
+                                    <div class='row p-0 m-0'>
+                                        <img class='col p-0 ' ng-src="/media/[[md.theme.list[$index].fields.thumbnail  ]]">
+                                    </div>
                                 </div>
                             </div>  
                             <div class="item-content container">
@@ -106,6 +109,7 @@
         window.__model = {};
         window.__model.drafts_count = Number('{{drafts_count}}');
         window.__model.portfolios_serialized = JSON.parse('{{ portfolios_serialized }}'.replace(/&quot;/g,'"'));
+        window.__model.portfolios_related_serialized = JSON.parse('{{ portfolios_related_serialized }}'.replace(/&quot;/g,'"'));
         
         window.__angular.ext.init();
     });
