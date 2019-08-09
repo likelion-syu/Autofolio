@@ -25,6 +25,13 @@ body {
 	height: 100%;
 	/* min-height: 600px; */
 }
+.row h1 {
+	font-weight: 700;
+}
+.row h2 {
+	font-size: 1.3rem;
+	line-height: 2.2rem;
+}
 
 /* title */
 .title {
@@ -34,20 +41,18 @@ body {
 .title h1 {
 	font-size: 5.5rem;
 	font-weight: 700;
+	text-decoration: underline;
+    text-decoration-color: #057aff;
 }
 .title h2 {
-	font-size: 1.5rem;
+	font-weight: 700;
 }
 .titletext-container {
 	margin: 0;
-	/* position: absolute; */
 	padding: 0px 20px;
-    /* top: 50%;
-    left: 50%;
-    -ms-transform: translate(-50%, -50%);
-	transform: translate(-50%, -50%); */
 	width: 100%;
 }
+/* text */
 .title .col-md-7 {
 	min-height: 300px;
 	display: flex;
