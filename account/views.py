@@ -42,6 +42,11 @@ def signin(req):
     else:
         return render(request, './account/index.html')
 
+def logout(req):
+    if req.method == 'POST':
+        auth.logout(req)
+        return redirect('main')
+    return render(req, './account/index.html')
 
 def account_find(req):
     return render(req, './account/find.html')

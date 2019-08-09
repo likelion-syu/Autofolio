@@ -1,25 +1,80 @@
 window.__angular_app
+.directive('myRepeatDirective', function() {
+    return function(scope, element, attrs) {
+        if (scope.$last){
+            window._swiper = new Swiper('.swiper-container', {
+                slidesPerView: 3,
+                spaceBetween: 30,
+                pagination: {
+                  el: '.swiper-pagination',
+                  clickable: true,
+                },
+              });
+        }
+    };
+})
 .directive('krInput', [ '$parse', function($parse) { return { priority : 2, restrict : 'A', compile : function(element) { element.on('compositionstart', function(e) { e.stopImmediatePropagation(); }); }, }; } ])
-.controller('pDetailCtrl' , ['$scope' , function($s){
+.service('pDetailService' , ['$http' , function($http){
+    let config = {
+        url : '/portfolio/api/create',
+        method : 'POST'
+    }    
+    return {
+        create : function(data){
+            return $http({
+                method : config.method,
+                url : config.url,
+                data : data,
+                headers : {
+                    'Content-Type' : 'application/json'
+                }
+            });
+        }
+    }
+}])
+.controller('pDetailCtrl' , ['$scope' , 'pDetailService' , function($s , $conn){
+    
     $s.md = {
+        title : '',
+        share_state : false,
         tags : {
-            list : [
-                'tag1',
-                'tag2',
-            ],
+            list : [],
             input : ""
+        },
+        drafts : {
+            list : [],
+            selected : {},
+            search : ''
+        },
+        themes : {
+            list : [],
+            selected : {},
         }
     }
     $s.fn = {
+        set : function(){
+            $s.md.themes.list = window.__model.themes_serialized;
+            $s.md.drafts.list = window.__model.drafts_serialized;
+            $s.$apply();
+        },
+        drafts : {
+            select : function(item){
+                $s.md.drafts.selected = item;
+                console.log($s.md.drafts.selected);
+            }
+        },
+        themes : {
+            select : function(item){
+                $s.md.themes.selected = item;
+                console.log($s.md.themes.selected);
+            }
+        },
         tags : {
             init : function(){},
             remove : function(idx){
-                // console.log(idx);
-                // console.log($s.md.tags.list);
                 $s.md.tags.list.splice(idx , 1);
             },
             insert : function(e){
-                // console.log(e);
                 if(e.keyCode === 13){
                     if($s.md.tags.input.trim() !== ""){
                         if($s.md.tags.list.length >= 5){
@@ -39,9 +94,49 @@ window.__angular_app
                 }
             },
         },
+        common : {
+            valid : function(){
+                // title 
+                if($s.md.title.trim().length <= 0){ 
+                    alert('제목을 입력해주세요');
+                    $('#portfolio_title').focus();
+                    return false; 
+                }
+                else if(!$s.md.drafts.selected.pk){ 
+                    alert('작성할 드래프트를 선택해주세요');
+                    return false; 
+                }
+                else if(!$s.md.themes.selected.pk){ 
+                    alert('작성할 테마를 선택해주세요')
+                    return false; 
+                }
+                else { return true; }
+            },
+            submit : function(){
+                if($s.fn.common.valid()){
+                    let data = {};
+                    data.title = $s.md.title.trim();
+                    data.share_state = $s.md.share_state;
+                    data.tags = $s.md.tags.list.join();
+                    data.draft = $s.md.drafts.selected;
+                    data.theme = $s.md.themes.selected;
+                    $conn.create(data)
+                    .then(function(res){
+                        console.log(res);
+                    })
+                }
+                console.log($s.md);
+            }
+        },
         init : function(){
             console.log($s.md.tags);
         }
     }
     $s.fn.init();
 }]);
+
+window.__angular = {
+    set : function(){
+        angular.element($('.portfolio-detail').eq(0)).scope().fn.set();
+    }
+}
