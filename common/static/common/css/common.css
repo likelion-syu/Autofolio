@@ -1,5 +1,7 @@
-.autofolio-body{
-    /* margin-top:56px; */
+html , body , .autofolio-body{
+    /* 크기 공통 고정을 위해 사용 */
+    width : 100%;
+    height : 100%;
 }
 /* NAVBAR FIXED 공간 만들기 */
 .autofolio-body > div{
