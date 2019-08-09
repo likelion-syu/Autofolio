@@ -5,10 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"
+        integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous"></script>
+    <!-- 동적div 추가 및 삭제 / id를 유동적으로 가져오는 방법이 필요함-->
     <script type="text/javascript">
-
         function add_div() {
-
             var div = document.createElement('div');
             div.innerHTML = document.getElementById('personal_information').innerHTML;
             document.getElementById('add').appendChild(div);
@@ -22,7 +23,7 @@
 </head>
 <body>
     <div class="container">
-        <input type="button" value="추가" onclick="add_div()"><br />
+        <input type="button" value="추가" onclick="add_div()"><br/>
         <div id="personal_information">
             <form method='GET'>
                 <table border="1">
@@ -246,7 +247,7 @@
             <a>삭제하기</a>
         </div>
     </div>
-    
-    
+    <!-- 삭제시 경고창생성 혹시몰라서 맨밑에 둠 -->
+
 </body>
 </html>
