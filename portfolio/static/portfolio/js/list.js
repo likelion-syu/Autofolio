@@ -1,4 +1,4 @@
-window.__angular_app
+window.__angular.module
 .directive('myRepeatDirective', function() {
     return function(scope, element, attrs) {
         if (scope.$last){
@@ -13,19 +13,7 @@ window.__angular_app
         }
     };
 })
-.directive('runPerRepeating' , function(){
-    return {
-        scope: { 
-            runPerRepeating : '=' ,
-            runPerRepeatingSource : '='
-        },
-        link : (scope , elem , attrs) =>{
-            scope.runPerRepeating(scope.runPerRepeatingSource);
-            
-        } 
-    }
-})
-.controller("pListCtrl" , ['$scope' , ($s) =>{
+.controller("pListCtrl" , ['$scope' , 'pService' , ($s , $serv) =>{
     $s.md = {
         portfolios : {
             items : []
@@ -42,8 +30,16 @@ window.__angular_app
             }
         },
         list : {
-            close : function(){
-
+            get : function(){
+                
+            },
+            del : function(item){
+                if(confirm('삭제하시겠습니까?')){
+                    $serv.list.del(item.pk)
+                    .then(res=>{
+                        console.log(res);
+                    });
+                }
             },
             repeat : function(item){
                 if(item.fields && item.fields.tags){
@@ -67,15 +63,8 @@ window.__angular_app
         }
     }
 }])
-.filter('momentFromNow', function () {
-    return function (item) {
-        let currentMoment = moment(item);
-        // console.log(item , currentMoment);
-        return currentMoment.fromNow();
-    };
-});
 
-window.__angular ={
+window.__angular.ext ={
     init : function(){
         angular.element($('.portfolio-list').eq(0)).scope().ext.init();
     }

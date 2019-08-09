@@ -20,10 +20,10 @@
     
     <script type='text/javascript' src="{% static 'common/js/moment-with-locales.js' %}"></script>
 
-    <script type='text/javascript'>
-        // angular load
-        window.__angular_app = angular.module('afapp' , [])
-    </script>
+    <script src="{% static 'common/js/angular/module.js' %}"></script>
+    <script src="{% static 'common/js/angular/services.js' %}"></script>
+    <script src="{% static 'common/js/angular/directives.js' %}"></script>
+    <script src="{% static 'common/js/angular/filters.js' %}"></script>
     {% block head %}
     {% endblock %}
     <title>Autofolio</title>
@@ -43,4 +43,12 @@
     {% block body-end %}
     {% endblock %}
 </body>
+
+<footer>
+    <div class="container">
+        <p>© 2019 Autofolio Allright reserved | 김혜원  배성현  유경수  위보람 이수연</p>
+        <p>서울특별시 노원구 공릉동 삼육대학교 학생회관 307호</p>
+        <p>sahmyook@likelion.org</p>
+    </div>
+</footer>
 </html>
