@@ -32,32 +32,44 @@
         </div>
         <div class="list-items container">
             <div class="items pt-5">
-                <div class="row">
-                    {% for item in portfolios %}
-                    <div class="col-3 item-wrapper container">
-                        <div class="item-header">
-                            <div class="float-right">
-                                <i class="fas fa-times-circle"></i>
-                            </div>
-                            <div class="thumbnail">
-                                
-                            </div>
-                        </div>  
-                        <div class="item-content container">
-                            <div class="row">
-                                <!-- <div class="col" ng-bind="item.title"></div> -->
-                                <div class="col">
-                                    {{item.title}}
+                <div class="row justify-content-start">
+                    
+                    <div class="col-4 item-container px-2 mb-3" ng-repeat="item in md.portfolios.items track by $index" run-per-repeating="fn.list.repeat" run-per-repeating-source="item">
+                        <div class="item-wrapper">
+                            <div class="item-header">
+                                <div class="item-header-cover-container pr-3">
+                                    <div class="float-right mr-3 mt-2" ng-click="fn.list.close()">
+                                        <i class="fas fa-times"></i>
+                                    </div>
+                                    <div class="text-center pr-3 item-header-edit">
+                                        <i class="fas fa-edit"></i>
+                                    </div>
+                                    <div class="item-header-cover">
+
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="row">
-                                <div class="col" >
-                                    {{item.created_dt}}
+                                <div class="thumbnail bg-warning">
+    
+                                </div>
+                            </div>  
+                            <div class="item-content container">
+                                <div class="row py-2">
+                                    <div class="col-12">
+                                        <h4 ng-bind='item.fields.title'></h4>
+                                    </div>
+                                    <div class="col-8">
+                                        <div class="tags-container row px-3 align-items-center">
+                                            <span class="col-auto badge badge-pill badge-secondary mr-2" ng-repeat="tag in item.tags_splitted track by $index" ng-bind='tag'></span>
+                                        </div>
+                                    </div>
+                                    <div class="col-4">
+                                        <div class='item-content-date text-right' ng-bind='item.fields.created_dt | momentFromNow'> </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    {% endfor %}
+                    
                     
                 </div>
             </div>
@@ -93,15 +105,17 @@
 
 <script type='text/javascript'>
     $(document).ready(()=>{
-        var count = Number('{{ drafts_count }}');
-        var portfolios = '{{ portfolios }}';
-        console.log(count);
-        console.log(portfolios);
+        window.__model = {};
+        window.__model.drafts_count = Number('{{drafts_count}}');
+        window.__model.portfolios_serialized = JSON.parse('{{ portfolios_serialized }}'.replace(/&quot;/g,'"'));
+        
+        window.__angular.init();
 
-        if(count === 0){
-            $('#btn-modal-toggle').click();
-        }
+        // if(count === 0){
+        //     $('#btn-modal-toggle').click();
+        // }
     });
+
 </script>
 
 {% endblock %}

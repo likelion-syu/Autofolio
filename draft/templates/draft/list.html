@@ -1,5 +1,80 @@
 {% extends 'common/base.html' %}
+{% load staticfiles %}
+{% block head %}
+    <style>
+      .bd-placeholder-img {font-size: 1.125rem;text-anchor: middle;-webkit-user-select: none;-moz-user-select: none;-ms-user-select: none;user-select: none;}
+      @media (min-width: 768px) {
+        .bd-placeholder-img-lg {font-size: 3.5rem;}
+      }
+      .swiper-slide {width:340px;}
+    </style>
+    <link rel="stylesheet" href="{% static 'common/bower_components/swiper/dist/css/swiper.css' %}">
+    <script type='text/javascript' src="{% static 'common/bower_components/swiper/dist/js/swiper.js' %}"></script>
+
+    <link rel="stylesheet" href="{% static 'portfolio/css/list.css' %}">
+    <script type="text/javascript" src="{% static 'portfolio/js/list.js' %}"></script>
+{% endblock %}
 
 {% block body %}
-    <h1>draft list page</h1>
+<div class="draft-list">
+    <div class="list-wrapper container mt-5">
+        <div class="list-header">
+            <div class="row">
+                <div class="col-4 align-self-center">
+                    <h3>작성중인 드래프트</h3>
+                </div>
+                <div class="col-8 align-self-center">
+                    <ul class="nav justify-content-end">
+                        <li class="nav-item">
+                            <a class="nav-link" href='create'>
+                                <i class="fas fa-plus"></i>
+                                <span>새 드래프트</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a class="nav-link" href='delete'>
+                                <span>휴지통</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a class="nav-link" href='sort'>
+                                <span>정렬</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+
+        </div>
+    </div>
+    <div class="list-items container">
+        <div class="items pt-5">
+            <div class="swiper-container">
+                <div class="swiper-wrapper pl-3 pr-3">
+                    <div class="swiper-slide p-3 col-3">
+                        <div class="item-wrapper container">
+                            <div class="item-header">
+                                <div class="float-right">
+                                    <i class="fas fa-times-circle"></i>
+                                </div>
+                                <div class="thumbnail">내용</div>
+                            </div>  
+                            <div class="item-content container">
+                                <div class="row">
+                                    <div class="col">내용</div>
+                                </div>
+                                <div class="row">
+                                    <div class="col">내용</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
 {% endblock %}
