@@ -1,4 +1,4 @@
-window.__angular_app
+window.__angular.module
 .directive('myRepeatDirective', function() {
     return function(scope, element, attrs) {
         if (scope.$last){
@@ -32,7 +32,7 @@ window.__angular_app
         }
     }
 }])
-.controller('pDetailCtrl' , ['$scope' , 'pDetailService' , function($s , $conn){
+.controller('pDetailCtrl' , ['$scope' , 'pDetailService' , 'pService' , function($s , $conn , $serv){
     
     $s.md = {
         title : '',
@@ -120,7 +120,7 @@ window.__angular_app
                     data.tags = $s.md.tags.list.join();
                     data.draft = $s.md.drafts.selected;
                     data.theme = $s.md.themes.selected;
-                    $conn.create(data)
+                    $serv.detail.create(data)
                     .then(function(res){
                         console.log(res);
                     })
@@ -135,7 +135,7 @@ window.__angular_app
     $s.fn.init();
 }]);
 
-window.__angular = {
+window.__angular.ext = {
     set : function(){
         angular.element($('.portfolio-detail').eq(0)).scope().fn.set();
     }

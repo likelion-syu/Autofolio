@@ -86,9 +86,10 @@ def api_create(req):
 @csrf_exempt
 def api_delete(req):
     data = json.loads(req.body)
-
+    print(data)
     try:
         portfolio = Portfolio.objects.get(pk = data['pk'])
+        portfolio.delete()
     except Portfolio.DoesNotExists:
         return JsonResponse({
             'result' : -1,
@@ -100,6 +101,13 @@ def api_delete(req):
     return JsonResponse({
         'result' : 1
     } , json_dumps_params={'ensure_ascii' : True})
+
+@csrf_exempt
+def api_update(req):
+    return JsonResponse({
+        'result' : 1,
+        'mesg' : '업데이트가 완료되었습니다.'
+    } , json_dumps_params={ 'ensure_ascii' : True })
 
 def get_drafts(req):    
     drafts = Draft.objects.filter(author = req.user).all()
